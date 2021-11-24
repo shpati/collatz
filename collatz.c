@@ -2,8 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-char num[]="";
-char *largest;
+char num[1000];
+char largest[1000];
 char dig[1];
 int carry, digit, t, c, z, n, one, max, count, length;
 
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 		if (max < n)
 		{
 			max = n;
-			largest = (char *) malloc(length);
+			//largest = (char *) malloc(length);
 			for (int i = 0; i < length; i++)
 					largest[i] = num[i];
 		}
