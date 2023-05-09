@@ -10,9 +10,7 @@ char dig[2];
 int carry, digit, t, c, z, n, one, max, count, length;
 
 int main(int argc, char *argv[])
-{
-    int printSequence = 1; // Flag to control printing the sequence, default is 1 (print)
-
+{   
     if (argc == 1)
     {
         printf("\n== Collatz Conjecture Calculator (for large numbers) - Shpati Koleka, MMXXI ==\n");
@@ -23,8 +21,6 @@ int main(int argc, char *argv[])
     {
         strncpy(num, argv[1], MAX_DIGITS - 1);
         num[MAX_DIGITS - 1] = '\0';
-        if (argc >= 3 && strcmp(argv[2], "-") == 0)
-            printSequence = 0;
         if ((argc < 3))
             printf("\nInput value: %s\n", num);
     }
@@ -38,7 +34,7 @@ int main(int argc, char *argv[])
     count = 0;
     one = 1;
 
-    if (printSequence)
+    if ((argc < 3))
         printf("\nSequence: ");
 
     while (one != 0)
@@ -57,7 +53,7 @@ int main(int argc, char *argv[])
         n = 0;
         count++;
         one++;
-        if (printSequence && (one != 2))
+        if ((one != 2) && ((argc < 3)))
             printf(", ");
         for (int i = 0; i < length; i++)
         {
@@ -66,7 +62,7 @@ int main(int argc, char *argv[])
                 z = 1;
             if (z == 1)
             {
-                if (printSequence)
+                if ((argc < 3))
                     printf("%c", num[i]);
                 n++;
             }
@@ -128,20 +124,16 @@ int main(int argc, char *argv[])
     }
 
     // Print the number of steps
-    if (printSequence) 
+    if ((argc < 3))
         printf("\n");
     if ((argc < 4))
         printf("\nSteps:");
     printf(" %d ", count - 1);
 
-    // Print largest value without leading zero if present
+    // Print largest value
     if ((argc < 4))
         printf("\n\nLargest value: ");
-
-    for (int i = 1; i < length; i++)
-        printf("%c", largest[i]);
-
-    printf("\n");
+    printf("%s\n", largest);
 
     return 0;
 }
