@@ -32,9 +32,14 @@ int main(int argc, char * argv[]) {
     one = 1;
     strncpy(largest, num, MAX_DIGITS);
 
-    if ((argc < 3))
+    if ((argc < 3)) {
         printf("\nSequence: ");
-
+        if (strcmp(num, "01") == 0) printf("1, 4, 2, 1");
+    }
+    if (strcmp(num, "01") == 0) {
+            count = 4;
+            strncpy(largest, "04", MAX_DIGITS); 
+    } else {
     while (one != 0) {
         // Add trailing zero if first character is not zero
         if (num[0] != '0') {
@@ -109,7 +114,7 @@ int main(int argc, char * argv[]) {
             }
         }
     }
-
+    }
     // Print the number of steps
     if ((argc < 3))
         printf("\n");
